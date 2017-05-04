@@ -1,0 +1,70 @@
+1.
+<html>
+<head>
+<title>test</title>
+</head>
+<body>
+<?php
+header('Content-Type: text/html; charset=utf-8');
+if(!mysql_connect("localhost","root","12345678"))
+	die("connect error");
+if(! @mysql_select_db("test"))
+	die("database連線失敗");
+$sql='SELECT cno,MAX(score) ,MIN(score)
+FROM sc GROUP BY cno
+';
+$result = mysql_query($sql);
+//$row = mysql_fetch_array($result);
+echo '<br>';
+$i=0;
+?>
+<table border="1" width="360">
+<?
+while($row = mysql_fetch_array($result)) {
+?>
+<?
+  if($i==0){
+?>
+　<tr>
+　	<td width=30%>
+	<?
+		echo 'cno';
+	?>	
+	</td>
+　	<td width=30%>
+	<?
+		echo 'MAX(score)';
+	?>	
+	</td>
+　	<td width=30%>
+	<?
+		echo 'MIN(score)';
+	?>	
+	</td>
+　</tr>
+<?
+  }
+ ?>
+　<tr>
+　	<td width=30%>
+	<?
+		echo $row[0];
+	?>	
+	</td>
+　	<td width=30%>
+	<?
+		echo $row[1];
+	?>	
+	</td>
+　	<td width=30%>
+	<?
+		echo $row[2];
+	?>	
+	</td>
+　</tr>
+<?
+$i++;
+}?>
+</table>
+</body>
+</html>
