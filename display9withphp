@@ -1,0 +1,5 @@
+/*統計每門課程平均分並按降序排列*/
+SELECT sc.cno,AVG(sc.score)
+FROM sc
+GROUP BY sc.cno
+ORDER BY AVG(sc.score) DESC
