@@ -6,7 +6,7 @@
 <body>
 <?php
 header('Content-Type: text/html; charset=utf-8');
-if(!mysql_connect("localhost","root","12345678"))
+if(!mysql_connect("localhost","",""))
 	die("connect error");
 if(! @mysql_select_db("test"))
 	die("database連線失敗");
