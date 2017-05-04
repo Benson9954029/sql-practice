@@ -1,0 +1,7 @@
+
+$sql="
+/*查看每門課程的平均分，保留小數點後兩位*/
+SELECT cno,ROUND(AVG(score),2)
+FROM sc 
+GROUP BY cno
+;"
