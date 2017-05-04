@@ -1,0 +1,5 @@
+/*查看只選了一門課的學生編號*/
+SELECT sno
+FROM sc 
+GROUP BY sno
+HAVING COUNT(cno) =1
