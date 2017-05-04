@@ -1,0 +1,3 @@
+SELECT sc.cno,COUNT(sc.sno)
+FROM sc
+GROUP BY sc.cno;
