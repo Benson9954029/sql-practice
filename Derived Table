@@ -1,0 +1,8 @@
+D.Dept_Name
+FROM Employees E,
+( SELECT D.Dept_ID,D.Dept_Name
+   FROM Departments D
+   WHERE Mgr_ID IN('890032','880017')
+   ) D
+   WHERE E.Dept_ID=D.Dept_ID
+   ORDER BY E.Dept_ID,E.Emp_Name
