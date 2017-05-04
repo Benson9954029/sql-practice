@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>test</title>
+</head>
+<body>
+<?php
+header('Content-Type: text/html; charset=utf-8');
+if(!mysql_connect("localhost","root","12345678"))
+	die("connect error");
+if(! @mysql_select_db("test"))
+	die("database連線失敗");
+ 
+$sql="
+/*查看選課情況情況和編號002完全相同的學生的姓名、編號*/
+SELECT student.sname,student.sno
+FROM student 
+JOIN sc ON (student.sno = sc.sno)
+WHERE sc.sno<>'s002' AND cno NOT IN(
+SELECT cno FROM sc
+WHERE cno NOT IN(
+SELECT cno FROM sc WHERE sno = 's002'
+)
+)
+GROUP BY student.sname
+HAVING COUNT(*) =(SELECT COUNT(*) FROM sc WHERE sno = 's002' GROUP BY sno)
+;";
+$result = mysql_query($sql);
+//$row = mysql_fetch_array($result);
+echo '<br>';
+$i=0;
+?>
+<table border="1" width="360">
+<?
+while($row = mysql_fetch_array($result)) {
+  if($i==0){
+?>
+　<tr>
+　	<td width=30%>
+	<?
+		echo '名字';
+	?>	
+	</td>
+	<td width=30%>
+	<?
+		echo '編號';
+	?>	
+	</td>
+　</tr>
+<?
+  }
+ ?>
+　<tr>
+　	<td width=30%>
+	<?
+		echo $row[0];
+	?>	
+	</td>
+	　	<td width=30%>
+	<?
+		echo $row[1];
+	?>	
+	</td>
+　</tr>
+<?
+$i++;
+}?>
+</table>
+</body>
+</html>
