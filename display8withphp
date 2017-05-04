@@ -1,0 +1,4 @@
+/*學生性別情況統計 */
+SELECT student.ssex,COUNT(ssex)
+FROM student
+GROUP BY ssex
