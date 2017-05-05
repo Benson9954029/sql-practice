@@ -1,0 +1,5 @@
+/*查詢每名學生得分在70分以上的課程名稱*/
+SELECT course.cname,student.sname,sc.score
+FROM sc JOIN course ON (course.cno = sc.cno)
+JOIN student ON (student.sno = sc.sno)
+WHERE sc.score >70
