@@ -1,0 +1,7 @@
+/*統計選了c001、c002兩門課程且前者成績高於後者的學生姓名、編號、課程編號及得分*/
+SELECT student.sname,sc_1.cno,sc_1.score,sc_2.score
+FROM student,
+(SELECT * FROM sc sc_1 WHERE sc_1.cno = 'c001')sc_1,
+(SELECT * FROM sc sc_2 WHERE sc_2.cno = 'c002')sc_2
+WHERE sc_1.score>sc_2.score AND sc_1.sno = sc_2.sno AND sc_1.sno = student.sno
+;";
