@@ -1,0 +1,5 @@
+/*查詢所有成績都在70分以上的學生*/
+SELECT DISTINCT student.sname
+FROM student
+JOIN sc ON (student.sno = sc.sno)
+WHERE student.sno NOT IN (SELECT sno FROM sc WHERE sc.score<70)
