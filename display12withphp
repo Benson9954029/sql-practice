@@ -1,0 +1,6 @@
+/*查詢所有學生的得分情況*/
+SELECT student.sno,sc.score
+FROM student
+LEFT JOIN sc ON (student.sno = sc.sno)
+GROUP BY student.sno
+;
