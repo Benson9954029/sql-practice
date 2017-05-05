@@ -1,0 +1,7 @@
+/*查詢選了J2SE這門課程得分高於80分的學生姓名及成績*/
+SELECT student.sname,sc.score
+FROM student
+JOIN sc ON (student.sno = sc.sno)
+JOIN course ON (course.cno = sc.cno)
+WHERE course.cname = 'J2SE'
+HAVING sc.score>80
