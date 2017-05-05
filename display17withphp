@@ -1,0 +1,5 @@
+/*統計每名學生編號、姓名、選課數量、總分 */
+SELECT student.sno,student.sname,COUNT(cno),SUM(sc.score)
+FROM sc
+RIGHT JOIN student ON (sc.sno = student.sno)
+GROUP BY student.sno,student.sname
