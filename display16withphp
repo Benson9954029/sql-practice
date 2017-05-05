@@ -1,0 +1,4 @@
+/*統計平均成績在60分以上的學生標號 */
+SELECT sno, AVG(score) avg_score FROM sc
+GROUP BY sno
+HAVING avg_score > 60
